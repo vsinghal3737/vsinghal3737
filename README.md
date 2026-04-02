@@ -18,8 +18,8 @@ Senior Software Engineer at Workday, focused on building scalable backend system
 - Monitoring Service
 - LLM-powered projects:
   - Vault-Notes
-  - Voice
-  - Daily Log
+  - Voice Assistant (User → STT → LLM | LLM → TTS → User)
+  - Daily Log (w/ Voice Assistant)
   - LLM Orchestration / Gateway
 - Full-stack side projects
 
