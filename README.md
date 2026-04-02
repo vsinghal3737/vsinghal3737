@@ -14,7 +14,7 @@ Senior Software Engineer at Workday, focused on building scalable backend system
 - System design and distributed systems
 
 ## Featured work
-- [Portfolio](https://www.vaibhavsinghal.dev/)
+- Portfolio: [Repo](https://github.com/vsinghal3737/Vaibhav-Singhal-Portfolio) | [Live](https://www.vaibhavsinghal.dev/)
 - Monitoring Service
 - LLM-powered projects:
   - Vault-Notes
