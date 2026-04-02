@@ -13,13 +13,6 @@ Senior Software Engineer at Workday, focused on building scalable backend system
 - Full-stack products with strong backend foundations
 - System design and distributed systems
 
-## Tech stack
-**Languages:** Python, TypeScript, Java, SQL  
-**Backend:** FastAPI, Flask, Django, NestJS, Micronaut, REST APIs  
-**Database:** PostgreSQL  
-**Cloud / Infra:** AWS, GCP, Docker  
-**Other:** Git, CI/CD, async programming, system design
-
 ## Featured work
 - [Portfolio](https://www.vaibhavsinghal.dev/)
 - Monitoring Service
@@ -29,18 +22,6 @@ Senior Software Engineer at Workday, focused on building scalable backend system
   - Daily Log
   - LLM Orchestration / Gateway
 - Full-stack side projects
-
-## Ask me about
-- Backend engineering
-- API design
-- Python / FastAPI services
-- System design
-- LLM product architecture
-- Scaling side projects into real products
-
-## Connect
-- [Portfolio](https://www.vaibhavsinghal.dev/)
-- [LinkedIn](https://www.linkedin.com/in/singhal-vaibhav-)
 
 ---
 *Building useful, scalable systems without unnecessary complexity.*
