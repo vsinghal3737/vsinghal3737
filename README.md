@@ -1,16 +1,46 @@
-## Hi there 👋
+# Hi, I'm Vaibhav Singhal
 
-<!--
-**vsinghal3737/vsinghal3737** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Senior Software Engineer at Workday, focused on building scalable backend systems, clean APIs, and ambitious AI-driven products.
 
-Here are some ideas to get you started:
+## About me
+- Backend-focused engineer with a strong interest in system design and architecture
+- Work primarily with Python (FastAPI, Flask, Django), Java (Micronaut), TypeScript (NestJS), PostgreSQL, AWS/GCP, and Docker
+- Interested in LLM systems, developer tooling, and production-grade full-stack products
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Side projects
+- AI / LLM-powered applications
+- Backend architecture and internal platform design
+- Full-stack products with strong backend foundations
+- System design and distributed systems
+
+## Tech stack
+**Languages:** Python, TypeScript, Java, SQL  
+**Backend:** FastAPI, Flask, Django, NestJS, Micronaut, REST APIs  
+**Database:** PostgreSQL  
+**Cloud / Infra:** AWS, GCP, Docker  
+**Other:** Git, CI/CD, async programming, system design
+
+## Featured work
+- [Portfolio](https://www.vaibhavsinghal.dev/)
+- Monitoring Service
+- LLM-powered projects:
+  - Vault-Notes
+  - Voice
+  - Daily Log
+  - LLM Orchestration / Gateway
+- Full-stack side projects
+
+## Ask me about
+- Backend engineering
+- API design
+- Python / FastAPI services
+- System design
+- LLM product architecture
+- Scaling side projects into real products
+
+## Connect
+- [Portfolio](https://www.vaibhavsinghal.dev/)
+- [LinkedIn](https://www.linkedin.com/in/singhal-vaibhav-)
+
+---
+*Building useful, scalable systems without unnecessary complexity.*
