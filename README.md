@@ -17,16 +17,16 @@ Senior Software Engineer at Workday, focused on building scalable backend system
 - Portfolio: [Repo](https://github.com/vsinghal3737/Vaibhav-Singhal-Portfolio) | [Live](https://www.vaibhavsinghal.dev/)
 - Monitoring Service
 - LLM-powered projects:
-  - Axiom — AI-powered markdown notes platform (8 repos, microservices)
+  - Axiom — AI-powered markdown notes platform (7 repos, microservices)
     - Application
       - [`Axiom-api`](https://github.com/vsinghal3737/Axiom-api) — Backend API (FastAPI, SQLModel, PostgreSQL, Supabase)
       - [`Axiom-ui`](https://github.com/vsinghal3737/Axiom-ui) — Frontend (Next.js 14, TypeScript, Tailwind, TanStack Query)
-      - [`Axiom-nexus`](https://github.com/vsinghal3737/Axiom-nexus) — LLM gateway and job orchestrator
+      - [`Axiom-nexus`](https://github.com/vsinghal3737/Axiom-nexus) — LLM gateway — job orchestration, RAG, SSE streaming, cost tracking
       - [`Axiom-orchestration`](https://github.com/vsinghal3737/Axiom-orchestration) — Docker Compose + deployment scripts
     - AI Platform (independent, reusable microservices)
       - [`pulse`](https://github.com/vsinghal3737/pulse) — Ingestion service — text, audio, image, docs → structured context
-      - [`cortex`](https://github.com/vsinghal3737/cortex) — LLM executor — multi-provider (OpenAI, Anthropic, Gemini), streaming, fallback
-      - [`synth`](https://github.com/vsinghal3737/synth) — Output renderer — text, TTS, image gen, file assembly
+      - [`cortex`](https://github.com/vsinghal3737/cortex) — Universal AI model gateway — completions, embeddings, STT, TTS
+      - [`synth`](https://github.com/vsinghal3737/synth) — Output renderer — text, TTS, file assembly
     - [`my-notes`](https://github.com/vsinghal3737/my-notes) — V1 monorepo (deprecated, migration reference)
   - SmartKart — AI-powered meal-kit ordering platform (event-driven, conversational ordering)
     - [`SmartKart-api`](https://github.com/vsinghal3737/SmartKart-api) — Backend API (FastAPI, SQLModel, PostgreSQL, RabbitMQ)
