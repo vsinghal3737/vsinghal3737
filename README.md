@@ -17,7 +17,14 @@ Senior Software Engineer at Workday, focused on building scalable backend system
 - Portfolio: [Repo](https://github.com/vsinghal3737/Vaibhav-Singhal-Portfolio) | [Live](https://www.vaibhavsinghal.dev/)
 - Monitoring Service
 - LLM-powered projects:
-  - Vault-Notes
+  - Vault-Notes — AI-powered markdown notes platform (7 repos, microservices)
+      - [`my-notes`](https://github.com/vsinghal3737/my-notes) — Backend API (FastAPI, SQLModel, PostgreSQL, Supabase)
+      - [`UI`](https://github.com/vsinghal3737/UI) — Frontend (Next.js 14, TypeScript, Tailwind, TanStack Query)
+      - [`orchestration`](https://github.com/vsinghal3737/orchestration) — Docker Compose + deployment scripts
+      - [`Nexus`](https://github.com/vsinghal3737/Nexus) — LLM gateway and job orchestrator (per-project)
+      - [`Pulse`](https://github.com/vsinghal3737/pulse) — Ingestion service — text, audio, image, docs → structured context
+      - [`cortex`](https://github.com/vsinghal3737/cortex) — LLM executor — multi-provider (OpenAI, Anthropic, Gemini), streaming, fallback
+      - [`synth`](https://github.com/vsinghal3737/synth) — Output renderer — text, TTS, image gen, file assembly
   - Voice Assistant (User → STT → LLM | LLM → TTS → User)
   - Daily Log (w/ Voice Assistant)
   - LLM Orchestration / Gateway
