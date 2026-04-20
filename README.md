@@ -86,12 +86,18 @@ flowchart LR
         Synth["Synth"]
     end
 
+    subgraph Infra["Infrastructure"]
+        ZOrch["Orchestration<br/>Docker Compose<br/>Dev Environment"]
+        PG[(PostgreSQL<br/>pgvector)]
+    end
+
     ZUI --> ZAPI
     ZUI --> ZNexus
     ZNexus --> Pulse & Cortex & Synth
     ZNexus --> ZBridge
-    ZAPI --> PG[(PostgreSQL<br/>pgvector)]
+    ZAPI --> PG
     ZNexus --> PG
+    ZOrch -.- ZUI & ZAPI & ZNexus & ZBridge
 ```
 
 | Repo | Stack | What it does |
