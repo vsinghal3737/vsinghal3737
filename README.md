@@ -26,8 +26,8 @@ flowchart LR
     Gateway --> Pulse
     Gateway --> Cortex
     Gateway --> Synthesizer
-    Pulse -. optional parse .-> Cortex
-    Synthesizer -. optional compose .-> Cortex
+    Pulse -. parse (optional) .-> Cortex
+    Synthesizer -. compose (optional) .-> Cortex
 ```
 
 | Repo | Stack | What it does |
@@ -47,6 +47,7 @@ flowchart LR
         UI["Axiom UI<br/>Next.js 14 / TypeScript<br/>Tailwind / TanStack Query"]
         API["Axiom API<br/>FastAPI / SQLModel<br/>Supabase Auth / Alembic"]
         Nexus["Axiom Nexus<br/>LLM Gateway / SSE Streaming<br/>Job Queue / Prompt Cache"]
+        PG[("PostgreSQL<br/>pgvector")]
     end
 
     subgraph Prism["Prism AI Platform"]
@@ -58,7 +59,6 @@ flowchart LR
 
     subgraph Infra["Infrastructure"]
         Orch["Axiom Orchestration<br/>Docker Compose / nginx<br/>e2e / CI Guardrails"]
-        PG[("PostgreSQL<br/>pgvector")]
     end
 
     UI --> API
@@ -89,6 +89,14 @@ flowchart LR
         ZAPI["ZitherAi API<br/>FastAPI / SQLModel"]
         ZNexus["ZitherAi Nexus<br/>Music Brain"]
         ZBridge["ZitherAi Bridge<br/>Provider Adapters"]
+        PG[("PostgreSQL<br/>pgvector")]
+    end
+
+    subgraph Providers["Music Providers"]
+
+        YouTube["YouTube"]
+        Spotify["Spotify"]
+        Apple["Apple Music"]
     end
 
     subgraph Prism["Prism AI Platform"]
@@ -100,7 +108,6 @@ flowchart LR
 
     subgraph Infra["Infrastructure"]
         ZOrch["ZitherAi Orchestration<br/>Docker Compose / nginx"]
-        PG[("PostgreSQL<br/>pgvector")]
     end
 
     ZUI --> ZAPI
@@ -108,6 +115,9 @@ flowchart LR
     ZAPI --> PG
     ZNexus --> PG
     ZNexus --> ZBridge
+    ZBridge --> YouTube
+    ZBridge --> Spotify
+    ZBridge --> Apple
     ZNexus --> Gateway
     Gateway --> Pulse
     Gateway --> Cortex
@@ -116,6 +126,8 @@ flowchart LR
     ZOrch -.- ZAPI
     ZOrch -.- ZNexus
     ZOrch -.- ZBridge
+
+    style Providers fill:#262626,stroke:#525252,color:#e5e5e5,stroke-dasharray: 4 4
 ```
 
 | Repo | Stack | What it does |
@@ -123,7 +135,7 @@ flowchart LR
 | [`ZitherAi-api`](https://github.com/vsinghal3737/ZitherAi-api) | FastAPI / SQLModel / PostgreSQL | Backend API: users, taste profiles, playlists |
 | [`ZitherAi-ui`](https://github.com/vsinghal3737/ZitherAi-ui) | Next.js 14 / TypeScript / Tailwind | Frontend: conversational playlist generation |
 | [`ZitherAi-nexus`](https://github.com/vsinghal3737/ZitherAi-nexus) | FastAPI / SSE / pgvector | Music brain: recommendations, ranking, embeddings |
-| [`ZitherAi-bridge`](https://github.com/vsinghal3737/ZitherAi-bridge) | FastAPI / stateless | Provider adapters: YouTube and Apple Music |
+| [`ZitherAi-bridge`](https://github.com/vsinghal3737/ZitherAi-bridge) | FastAPI / stateless | Provider adapters: YouTube, Spotify, Apple Music |
 | [`ZitherAi-orchestration`](https://github.com/vsinghal3737/ZitherAi-orchestration) | Docker Compose / nginx / Make | Local stack, gateway routing, Prism network wiring |
 
 ### Other Projects
