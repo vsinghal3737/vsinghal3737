@@ -84,33 +84,31 @@ AI music brain and playlist copilot with provider adapters, taste modeling, play
 
 ```mermaid
 flowchart LR
-    subgraph ZitherAi
-        ZUI["ZitherAi UI<br/>Next.js / TypeScript"]
-        ZAPI["ZitherAi API<br/>FastAPI / SQLModel"]
-        ZNexus["ZitherAi Nexus<br/>Music Brain"]
-        ZBridge["ZitherAi Bridge<br/>Provider Adapters"]
+    subgraph ZitherAi["ZitherAi"]
+        direction TB
+        ZUI["UI"]
+        ZAPI["API"]
+        ZNexus["Nexus"]
+        ZBridge["Bridge"]
+
+        ZUI --> ZAPI
+        ZUI --> ZNexus
+        ZNexus --> ZBridge
     end
 
-    subgraph Prism["Prism AI Platform"]
+    subgraph Prism["Prism"]
+        direction TB
         Gateway["Prism Gateway"]
         Pulse["Prism-pulse"]
         Cortex["Prism-cortex"]
         Synthesizer["Prism-synthesizer"]
+
+        Gateway --> Pulse
+        Gateway --> Cortex
+        Gateway --> Synthesizer
     end
 
-    subgraph Infra["Infrastructure"]
-        ZOrch["ZitherAi Orchestration<br/>Docker Compose / nginx"]
-        PG[("PostgreSQL<br/>pgvector")]
-    end
-
-    ZUI --> ZAPI
-    ZUI --> ZNexus
     ZNexus --> Gateway
-    Gateway --> Pulse & Cortex & Synthesizer
-    ZNexus --> ZBridge
-    ZAPI --> PG
-    ZNexus --> PG
-    ZOrch -.- ZUI & ZAPI & ZNexus & ZBridge
 ```
 
 | Repo | Stack | What it does |
