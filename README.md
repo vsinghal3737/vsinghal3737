@@ -12,7 +12,7 @@ Senior Software Engineer at Workday, focused on building scalable backend system
 
 ### Prism - Reusable AI Microservices Layer
 
-Shared AI platform powering the products below. Prism exposes Pulse, Cortex, and Synthesizer behind one gateway, with stable routes like `/pulse/v1`, `/cortex/v1`, and `/synthesizer/v1`.
+Shared AI platform powering the products below. Prism exposes Pulse, Cortex, and Synthesizer behind one gateway, with stable routes like `/pulse/v1`, `/cortex/v1`, and `/synthesizer/v1`. Its orchestration repo owns the local dev/e2e stack, provider defaults, gateway routing, and compose policy checks.
 
 ```mermaid
 flowchart LR
@@ -35,18 +35,18 @@ flowchart LR
 | [`Prism-pulse`](https://github.com/vsinghal3737/Prism-pulse) | FastAPI / stateless | Input service: text normalization, document parsing, optional model-backed transforms |
 | [`Prism-cortex`](https://github.com/vsinghal3737/Prism-cortex) | FastAPI / stateless | LLM executor: multi-provider OpenAI, Anthropic, Gemini, circuit breakers, fallback |
 | [`Prism-synthesizer`](https://github.com/vsinghal3737/Prism-synthesizer) | FastAPI / stateless | Output service: text, TTS, file generation, optional model-backed composition |
-| [`Prism-orchestration`](https://github.com/vsinghal3737/Prism-orchestration) | Docker Compose / nginx / Make | Independent Prism stack with gateway routing and external `prism-network` for consumer products |
+| [`Prism-orchestration`](https://github.com/vsinghal3737/Prism-orchestration) | Docker Compose / nginx / Make | Independent Prism stack with gateway routing, dev/e2e env ownership, and external `prism-network` for consumer products |
 
 ### Axiom - AI-Powered Markdown Notes Platform
 
-Full-stack markdown notes platform with a domain-driven FastAPI backend, Next.js editor, streaming LLM gateway, Docker orchestration, e2e tests, and CI guardrails.
+Full-stack markdown notes platform with a domain-driven FastAPI backend, Next.js editor, streaming and queued AI workflows, Docker orchestration, e2e tests, and CI guardrails. Current product surfaces include Graph View, Canvas, Tables, Suggested Links, Links Panel, Review Inbox, Semantic Graph Edges, Knowledge Q&A reasoning, Smart Paste, Weekly Reports, and Daily Sparks.
 
 ```mermaid
 flowchart LR
     subgraph Axiom
-        UI["Axiom UI<br/>Next.js 14 / TypeScript<br/>Tailwind / TanStack Query"]
+        UI["Axiom UI<br/>Next.js / TypeScript<br/>Tailwind / TanStack Query"]
         API["Axiom API<br/>FastAPI / SQLModel<br/>Supabase Auth / Alembic"]
-        Nexus["Axiom Nexus<br/>LLM Gateway / SSE Streaming<br/>Job Queue / Prompt Cache"]
+        Nexus["Axiom Nexus<br/>LLM Gateway / RAG<br/>Job Queue / Prompt Cache"]
         PG[("PostgreSQL<br/>pgvector")]
     end
 
@@ -72,28 +72,27 @@ flowchart LR
 
 | Repo | Stack | What it does |
 |------|-------|-------------|
-| [`Axiom-api`](https://github.com/vsinghal3737/Axiom-api) | FastAPI / SQLModel / PostgreSQL | Backend API: notes, workspaces, queue recovery |
-| [`Axiom-ui`](https://github.com/vsinghal3737/Axiom-ui) | Next.js 14 / TypeScript / Tailwind | Frontend: TanStack Query, Zustand, BlockNote editor |
-| [`Axiom-nexus`](https://github.com/vsinghal3737/Axiom-nexus) | FastAPI / SSE / pgvector | LLM gateway: jobs, RAG, streaming, cost tracking |
-| [`Axiom-orchestration`](https://github.com/vsinghal3737/Axiom-orchestration) | Docker Compose / nginx / Make | Local stack, e2e testing, Prism network wiring |
+| [`Axiom-api`](https://github.com/vsinghal3737/Axiom-api) | FastAPI / SQLModel / PostgreSQL | Backend API: notes, workspaces, graph/canvas/review features, semantic search, AI proxies |
+| [`Axiom-ui`](https://github.com/vsinghal3737/Axiom-ui) | Next.js / TypeScript / Tailwind | Frontend: BlockNote editor, graph/canvas/table surfaces, Review Inbox, AI reasoning UI |
+| [`Axiom-nexus`](https://github.com/vsinghal3737/Axiom-nexus) | FastAPI / SSE / pgvector | AI gateway: jobs, RAG, embeddings, prompt cache, reasoning, similarity services |
+| [`Axiom-orchestration`](https://github.com/vsinghal3737/Axiom-orchestration) | Docker Compose / nginx / Make | Local stack, gateway routing, e2e testing, Prism network wiring |
 | [`my-notes`](https://github.com/vsinghal3737/my-notes) | Monorepo | V1 migration reference |
 
 ### ZitherAi - AI Music Brain and Playlist Copilot
 
-AI music brain and playlist copilot with provider adapters, taste modeling, playlist ranking, sequencing, and Prism-backed AI operations.
+AI music brain and playlist copilot with provider adapters, taste modeling, playlist synthesis, smart discovery, explainable recommendations, library hygiene workflows, and Prism-backed AI operations.
 
 ```mermaid
 flowchart LR
     subgraph ZitherAi
         ZUI["ZitherAi UI<br/>Next.js / TypeScript"]
         ZAPI["ZitherAi API<br/>FastAPI / SQLModel"]
-        ZNexus["ZitherAi Nexus<br/>Music Brain"]
+        ZNexus["ZitherAi Nexus<br/>Music Brain<br/>Recommendations / Synthesis"]
         ZBridge["ZitherAi Bridge<br/>Provider Adapters"]
         PG[("PostgreSQL<br/>pgvector")]
     end
 
     subgraph Providers["Music Providers"]
-
         YouTube["YouTube"]
         Spotify["Spotify"]
         Apple["Apple Music"]
@@ -132,11 +131,11 @@ flowchart LR
 
 | Repo | Stack | What it does |
 |------|-------|-------------|
-| [`ZitherAi-api`](https://github.com/vsinghal3737/ZitherAi-api) | FastAPI / SQLModel / PostgreSQL | Backend API: users, taste profiles, playlists |
-| [`ZitherAi-ui`](https://github.com/vsinghal3737/ZitherAi-ui) | Next.js 14 / TypeScript / Tailwind | Frontend: conversational playlist generation |
-| [`ZitherAi-nexus`](https://github.com/vsinghal3737/ZitherAi-nexus) | FastAPI / SSE / pgvector | Music brain: recommendations, ranking, embeddings |
-| [`ZitherAi-bridge`](https://github.com/vsinghal3737/ZitherAi-bridge) | FastAPI / stateless | Provider adapters: YouTube, Spotify, Apple Music |
-| [`ZitherAi-orchestration`](https://github.com/vsinghal3737/ZitherAi-orchestration) | Docker Compose / nginx / Make | Local stack, gateway routing, Prism network wiring |
+| [`ZitherAi-api`](https://github.com/vsinghal3737/ZitherAi-api) | FastAPI / SQLModel / PostgreSQL | Backend API: users, provider accounts, taste memory, playlists, library and history |
+| [`ZitherAi-ui`](https://github.com/vsinghal3737/ZitherAi-ui) | Next.js / TypeScript / Tailwind | Frontend: discovery, playlists, prompt library, history, saved views, duplicate clusters |
+| [`ZitherAi-nexus`](https://github.com/vsinghal3737/ZitherAi-nexus) | FastAPI / SSE / pgvector | Music brain: recommendations, synthesis, briefings, duplicate analysis, embeddings |
+| [`ZitherAi-bridge`](https://github.com/vsinghal3737/ZitherAi-bridge) | FastAPI / stateless | Provider adapters: YouTube, Spotify, Apple Music, paginated imports |
+| [`ZitherAi-orchestration`](https://github.com/vsinghal3737/ZitherAi-orchestration) | Docker Compose / nginx / Make | Local stack, gateway routing, Prism network wiring, e2e checks |
 
 ### Other Projects
 
