@@ -3,7 +3,7 @@
 Senior Software Engineer at Workday. I design and build production-grade distributed systems, AI-powered products, and developer infrastructure — then open-source the interesting parts.
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-vaibhavsinghal.dev-000?style=flat-square&logo=vercel&logoColor=white)](https://www.vaibhavsinghal.dev/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-vsinghal3737-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vsinghal3737/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-singhal--vaibhav-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/-singhal-vaibhav-/)
 
 ---
 
