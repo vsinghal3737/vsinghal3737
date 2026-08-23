@@ -398,7 +398,7 @@ Standalone status is enforced, not aspirational. Anvil has no dependency on Pris
 | [`Anvil-orchestration`](https://github.com/vsinghal3737/Anvil-orchestration) | 8880 | nginx gateway for both planes, Compose root, independence gate, and smoke tooling | — |
 | [`Anvil-atlas`](https://github.com/vsinghal3737/Anvil-atlas) | — | Cross-repo documentation, contracts, architecture, and ADRs | — |
 
-*Architecture locked and scaffolded across eight repositories, with the seven-container stack running end-to-end. Phase 1 build in progress.*
+*Target architecture, in active development across eight repositories.*
 </details>
 
 ---
