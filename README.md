@@ -9,21 +9,25 @@ Senior Software Engineer at Workday. I design and build distributed systems, AI-
 
 ### What I Build
 
-**[Axiom](https://github.com/vsinghal3737?tab=repositories&q=axiom)** — AI-powered markdown knowledge platform built around a BlockNote editor, Dream Query across an entire workspace, Assist against one note, and React Flow surfaces for Graph View and Canvas. Durable chat runs replay over SSE by `Last-Event-ID`; spend accounting and per-project budgets, an AST-enforced per-note Vault, change sets, voice notes, dictation, TTS, writing-style adaptation, queue visibility, versions, trash, and export round out the workflow. Its hardening includes RFC 9457 errors, circuit breakers, RED metrics, architecture contract tests, and a transactional outbox. 2,939 tests across 5 repos.
+#### Products
 
-**[ZitherAi](https://github.com/vsinghal3737?tab=repositories&q=zitherai)** — Music intelligence product for taste modeling, four-stage natural-language curation, playlist synthesis, CRDT sync, photo soundtracks, library hygiene, and provider migration through exact ISRC, normalized, fuzzy, LLM, and user matching. Keyword, semantic, and auto search share one router while hum and clip search use a dedicated audio endpoint. It adds HDBSCAN genre clustering, NL-to-SQL listening analytics, and music generation through Prism Cortex with an ElevenLabs backend. 1,705 tests across 6 repos.
+**[Axiom](https://github.com/vsinghal3737?tab=repositories&q=axiom)** — AI-powered markdown knowledge platform built around a BlockNote editor, Dream Query across an entire workspace, Assist against one note, and React Flow surfaces for Graph View and Canvas. Durable chat runs replay over SSE by `Last-Event-ID`; spend accounting and per-project budgets, an AST-enforced per-note Vault, change sets, voice notes, dictation, TTS, writing-style adaptation, queue visibility, versions, trash, and export round out the workflow. Its hardening includes RFC 9457 errors, circuit breakers, RED metrics, architecture contract tests, and a transactional outbox. 2,939 tests across 4 service repos.
 
-**[Elocute](https://github.com/vsinghal3737?tab=repositories&q=elocute)** — Voice-to-text and tone transformation product with recording, transcription, four-stage smart processing, 17 tone presets, TTS, templates, analytics, compose flows, and export to PDF, DOCX, MD, SRT, and TXT. Transform work is job-backed: the API returns `202` with a stream URL, a worker claims work with `FOR UPDATE SKIP LOCKED`, and SSE replays from a PostgreSQL-backed buffer. 326 tests across 5 repos.
+**[ZitherAi](https://github.com/vsinghal3737?tab=repositories&q=zitherai)** — Music intelligence product for taste modeling, four-stage natural-language curation, playlist synthesis, CRDT sync, photo soundtracks, library hygiene, and provider migration through exact ISRC, normalized, fuzzy, LLM, and user matching. Keyword, semantic, and auto search share one router while hum and clip search use a dedicated audio endpoint. It adds HDBSCAN genre clustering, NL-to-SQL listening analytics, and music generation through Prism Cortex with an ElevenLabs backend. 1,705 tests across 5 service repos.
 
-**[Prism](https://github.com/vsinghal3737?tab=repositories&q=prism)** — Shared stateless AI platform: 31 endpoints across Pulse, Cortex, and Synthesizer behind an nginx gateway. OpenAI, Anthropic, Gemini, and ElevenLabs sit behind per-modality circuit breakers, provider bulkheads, fallback chains, idempotency replay, project-scoped rate limiting, SSRF and media hardening, and per-route body ceilings. Prism owns zero databases, tables, or migrations; callers own durability. 1,072 tests across 5 repos.
+**[Elocute](https://github.com/vsinghal3737?tab=repositories&q=elocute)** — Voice-to-text and tone transformation product with recording, transcription, four-stage smart processing, 17 tone presets, TTS, templates, analytics, compose flows, and export to PDF, DOCX, MD, SRT, and TXT. Transform work is job-backed: the API returns `202` with a stream URL, a worker claims work with `FOR UPDATE SKIP LOCKED`, and SSE replays from a PostgreSQL-backed buffer. 326 tests across 4 service repos.
 
-**[Synapse](https://github.com/vsinghal3737?tab=repositories&q=synapse)** — Shared stateful AI platform: Forge for evaluation, Mnemo for hierarchical memory, and Conduit for ETL, with 68 endpoints, 18 tables across 3 schemas, and 30 migrations. Tenant isolation lives in PostgreSQL through 69 row-level security policies and a two-login ownership model; transaction-local context, startup privilege checks, and byte-identical `404` responses close common bypasses. Synapse holds no provider credentials — model work goes through Prism Cortex. 614 tests across 5 repos.
+#### Platforms
 
-**[Sentinel](https://github.com/vsinghal3737?tab=repositories&q=sentinel)** — Observability platform with a beta SDK and a six-container telemetry stack. `instrument(app, "service-name")` enables FastAPI and HTTPX instrumentation by default, adds Redis and SQLAlchemy only when named, and contributes four host-owned route contracts without opening a listener. OTLP ingress uses TLS and per-consumer bcrypt credentials. The platform is implemented and tested; consumer rollout remains pending. 335 tests across 3 repos.
+**[Prism](https://github.com/vsinghal3737?tab=repositories&q=prism)** — Shared stateless AI platform: 31 endpoints across Pulse, Cortex, and Synthesizer behind an nginx gateway. OpenAI, Anthropic, Gemini, and ElevenLabs sit behind per-modality circuit breakers, provider bulkheads, fallback chains, idempotency replay, project-scoped rate limiting, SSRF and media hardening, and per-route body ceilings. Prism owns zero databases, tables, or migrations; callers own durability. 1,072 tests across 4 service repos.
+
+**[Synapse](https://github.com/vsinghal3737?tab=repositories&q=synapse)** — Shared stateful AI platform: Forge for evaluation, Mnemo for hierarchical memory, and Conduit for ETL, with 68 endpoints, 18 tables across 3 schemas, and 30 migrations. Tenant isolation lives in PostgreSQL through 69 row-level security policies and a two-login ownership model; transaction-local context, startup privilege checks, and byte-identical `404` responses close common bypasses. Synapse holds no provider credentials — model work goes through Prism Cortex. 614 tests across 4 service repos.
+
+**[Sentinel](https://github.com/vsinghal3737?tab=repositories&q=sentinel)** — Observability platform with a beta SDK and a six-container telemetry stack. `instrument(app, "service-name")` enables FastAPI and HTTPX instrumentation by default, adds Redis and SQLAlchemy only when named, and contributes four host-owned route contracts without opening a listener. OTLP ingress uses TLS and per-consumer bcrypt credentials. The platform is implemented and tested; consumer rollout remains pending. 335 tests across 2 service repos.
 
 **[Anvil](https://github.com/vsinghal3737?tab=repositories&q=anvil)** — Standalone hardware-aware local-LLM platform. It measures real machine capability, predicts model fit and throughput before download, selects an appropriate inference engine, and adds durable, verified execution for long unattended batch jobs. Its OpenAI-compatible data plane makes adoption a `base_url` swap; its control plane handles hardware discovery, planning, model supply, runtime lifecycle, checkpointed work, and output validation across 8 repos.
 
-Together: approximately 7,000 tests across 37 repositories.
+Together: approximately 7,000 tests across 23 implemented service repos; 37 repositories overall when Atlas documentation and Anvil's target architecture are included.
 
 ---
 
@@ -257,7 +261,7 @@ flowchart LR
 | [`Prism-cortex`](https://github.com/vsinghal3737/Prism-cortex) | FastAPI / stateless | Multi-provider model execution, bulkheads, circuit breakers, fallback chains, idempotency replay, and rate limiting | 381 |
 | [`Prism-synthesizer`](https://github.com/vsinghal3737/Prism-synthesizer) | FastAPI / stateless | Text and file rendering, TTS, music generation, media hardening, and output controls | 285 |
 | [`Prism-orchestration`](https://github.com/vsinghal3737/Prism-orchestration) | Docker Compose / nginx / Make | Gateway, external network, health checks, and end-to-end verification | 124 |
-| [`Prism-atlas`](https://github.com/vsinghal3737/Prism-atlas) | Documentation / ADRs | Prism family truth and the canonical architecture map across all seven families | — |
+| [`Prism-atlas`](https://github.com/vsinghal3737/Prism-atlas) | Documentation / ADRs | Prism family architecture, contracts, capabilities, and decisions | — |
 
 </details>
 
@@ -405,7 +409,7 @@ Standalone status is enforced, not aspirational. Anvil has no dependency on Pris
 
 ### Documentation Standard
 
-Every family carries the same frozen-v1 documentation tier, plus an `-atlas` repository that owns cross-repo truth no individual service can claim: whole-system architecture, capability maps, security posture, technology inventory, glossary, roadmap, and family-level ADRs. `Prism-atlas` holds the canonical map across all seven families.
+Every family carries the same frozen-v1 documentation tier, plus an `-atlas` repository that owns its family's cross-repo truth no individual service can claim: whole-system architecture, capability maps, security posture, technology inventory, glossary, roadmap, and family-level ADRs.
 
 Each code repository carries a documentation index, system and component architecture, an API catalog, per-endpoint call flows, sequence diagrams, operations guidance, ADRs, runbooks, and a database design wherever it owns tables.
 
