@@ -1,6 +1,6 @@
 # Hey, I'm Vaibhav
 
-Senior Software Engineer at Workday. I design and build production-grade distributed systems, AI-powered products, and developer infrastructure — then open-source the interesting parts.
+Senior Software Engineer at Workday. I design and build distributed systems, AI-powered products, and developer infrastructure — then open-source the interesting parts.
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-vaibhavsinghal.dev-000?style=flat-square&logo=vercel&logoColor=white)](https://www.vaibhavsinghal.dev/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-singhal--vaibhav-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/-singhal-vaibhav-/)
@@ -9,17 +9,25 @@ Senior Software Engineer at Workday. I design and build production-grade distrib
 
 ### What I Build
 
-**[Axiom](https://github.com/vsinghal3737?tab=repositories&q=axiom)** — AI-powered markdown knowledge platform. Streaming LLM workflows, semantic graph, RAG, rich editor, Graph View, Canvas, Tables, Review Inbox, Knowledge Q&A, Smart Paste, Weekly Reports, Daily Sparks. Production-hardened with RFC 9457 error responses, circuit breakers, RED metrics, and architecture contract tests.
+#### Products
 
-**[ZitherAi](https://github.com/vsinghal3737?tab=repositories&q=zitherai)** — Music intelligence product. Taste modeling, 4-stage NL curation pipeline, playlist synthesis, 4-mode search (keyword, semantic, hum, clip), provider migration engine with 5-tier track matching, CRDT playlist sync, music generation via ElevenLabs, photo soundtrack pipeline, listening analytics, and adapters for Spotify, YouTube, and Apple Music. ~1,700 tests across 5 repos.
+**[Axiom](https://github.com/vsinghal3737?tab=repositories&q=axiom)** — AI-powered markdown knowledge platform built around a BlockNote editor, Dream Query across an entire workspace, Assist against one note, and React Flow surfaces for Graph View and Canvas. Durable chat runs replay over SSE by `Last-Event-ID`; spend accounting and per-project budgets, an AST-enforced per-note Vault, change sets, voice notes, dictation, TTS, writing-style adaptation, queue visibility, versions, trash, and export round out the workflow. Its hardening includes RFC 9457 errors, circuit breakers, RED metrics, architecture contract tests, and a transactional outbox. 2,939 tests across 4 service repos.
 
-**[Elocute](https://github.com/vsinghal3737?tab=repositories&q=elocute)** — Voice-to-text and tone transformation product. Recording, transcription, smart text processing, tone system with streaming transform, TTS, export (PDF/DOCX/MD/SRT), templates, analytics, and a compose mode with context upload and SSE draft streaming.
+**[ZitherAi](https://github.com/vsinghal3737?tab=repositories&q=zitherai)** — Music intelligence product for taste modeling, four-stage natural-language curation, playlist synthesis, CRDT sync, photo soundtracks, library hygiene, and provider migration through exact ISRC, normalized, fuzzy, LLM, and user matching. Keyword, semantic, and auto search share one router while hum and clip search use a dedicated audio endpoint. It adds HDBSCAN genre clustering, NL-to-SQL listening analytics, and music generation through Prism Cortex with an ElevenLabs backend. 1,705 tests across 5 service repos.
 
-**[Prism](https://github.com/vsinghal3737?tab=repositories&q=prism)** — Shared stateless AI microservices layer. Three services (Pulse, Cortex, Synthesizer) behind an nginx gateway. Multi-provider LLM support, circuit breakers, fallback chains, SSRF hardening, idempotency caching, and rate limiting. 687 tests.
+**[Elocute](https://github.com/vsinghal3737?tab=repositories&q=elocute)** — Voice-to-text and tone transformation product with recording, transcription, four-stage smart processing, 17 tone presets, TTS, templates, analytics, compose flows, and export to PDF, DOCX, MD, SRT, and TXT. Transform work is job-backed: the API returns `202` with a stream URL, a worker claims work with `FOR UPDATE SKIP LOCKED`, and SSE replays from a PostgreSQL-backed buffer. 326 tests across 4 service repos.
 
-**[Synapse](https://github.com/vsinghal3737?tab=repositories&q=synapse)** — Shared stateful AI platform. LLM-as-Judge eval harness (Forge), hierarchical memory engine with forgetting curves (Mnemo), and exactly-once ETL pipeline (Conduit). Schema-per-service on shared PostgreSQL with project-level tenant isolation.
+#### Platforms
 
-**[Sentinel](https://github.com/vsinghal3737?tab=repositories&q=sentinel)** — Shared observability stack. OTel Collector, Tempo, Loki, Prometheus, and Grafana — plus a pip-installable SDK with a single `instrument(app)` entry point that wires traces, structured logs, metrics, and health checks. 143 tests.
+**[Prism](https://github.com/vsinghal3737?tab=repositories&q=prism)** — Shared stateless AI platform: 31 endpoints across Pulse, Cortex, and Synthesizer behind an nginx gateway. OpenAI, Anthropic, Gemini, and ElevenLabs sit behind per-modality circuit breakers, provider bulkheads, fallback chains, idempotency replay, project-scoped rate limiting, SSRF and media hardening, and per-route body ceilings. Prism owns zero databases, tables, or migrations; callers own durability. 1,072 tests across 4 service repos.
+
+**[Synapse](https://github.com/vsinghal3737?tab=repositories&q=synapse)** — Shared stateful AI platform: Forge for evaluation, Mnemo for hierarchical memory, and Conduit for ETL, with 68 endpoints, 18 tables across 3 schemas, and 30 migrations. Tenant isolation lives in PostgreSQL through 69 row-level security policies and a two-login ownership model; transaction-local context, startup privilege checks, and byte-identical `404` responses close common bypasses. Synapse holds no provider credentials — model work goes through Prism Cortex. 614 tests across 4 service repos.
+
+**[Sentinel](https://github.com/vsinghal3737?tab=repositories&q=sentinel)** — Observability platform with a beta SDK and a six-container telemetry stack. `instrument(app, "service-name")` enables FastAPI and HTTPX instrumentation by default, adds Redis and SQLAlchemy only when named, and contributes four host-owned route contracts without opening a listener. OTLP ingress uses TLS and per-consumer bcrypt credentials. The platform is implemented and tested; consumer rollout remains pending. 335 tests across 2 service repos.
+
+**[Anvil](https://github.com/vsinghal3737?tab=repositories&q=anvil)** — Standalone hardware-aware local-LLM platform. It measures real machine capability, predicts model fit and throughput before download, selects an appropriate inference engine, and adds durable, verified execution for long unattended batch jobs. Its OpenAI-compatible data plane makes adoption a `base_url` swap; its control plane handles hardware discovery, planning, model supply, runtime lifecycle, checkpointed work, and output validation across 8 repos.
+
+Together: approximately 7,000 tests across 23 implemented service repos; 37 repositories overall when Atlas documentation and Anvil's target architecture are included.
 
 ---
 
@@ -40,6 +48,8 @@ Senior Software Engineer at Workday. I design and build production-grade distrib
 ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-D71F00?style=flat-square&logo=sqlalchemy&logoColor=white)
 ![nginx](https://img.shields.io/badge/nginx-009639?style=flat-square&logo=nginx&logoColor=white)
 ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white)
+![Anthropic](https://img.shields.io/badge/Anthropic-191919?style=flat-square&logo=anthropic&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat-square&logo=playwright&logoColor=white)
 ![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-000?style=flat-square&logo=opentelemetry&logoColor=white)
 ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white)
 ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white)
@@ -50,34 +60,41 @@ Senior Software Engineer at Workday. I design and build production-grade distrib
 
 ### Architecture
 
-Five products share two platform layers: **Prism** (stateless AI) and **Synapse** (stateful AI). **Sentinel** provides observability across the entire stack.
+The portfolio contains three products and two shared AI platforms: **Prism** for stateless processing and **Synapse** for stateful evaluation, memory, and ETL. **Sentinel** defines the observability platform and enrollment contracts. **Anvil** is deliberately standalone. No product-to-Synapse integration is deployed.
 
 ```mermaid
 flowchart LR
-    subgraph Products
+    subgraph Products["Products"]
         Axiom["Axiom<br/>Knowledge Platform"]
-        ZitherAi["ZitherAi<br/>Music Brain"]
+        ZitherAi["ZitherAi<br/>Music Intelligence"]
         Elocute["Elocute<br/>Voice + Tone"]
     end
 
     subgraph Prism["Prism — Stateless AI"]
         PGW["Gateway<br/>nginx"]
         P["Pulse<br/>Input"]
-        C["Cortex<br/>LLM"]
+        C["Cortex<br/>Models"]
         S["Synthesizer<br/>Output"]
     end
 
     subgraph Synapse["Synapse — Stateful AI"]
         SGW["Gateway<br/>nginx"]
-        F["Forge<br/>Eval"]
+        F["Forge<br/>Evaluation"]
         M["Mnemo<br/>Memory"]
         D["Conduit<br/>ETL"]
     end
 
-    Sentinel["Sentinel<br/>Observability"]
+    subgraph Anvil["Anvil — Standalone Local AI"]
+        AGW["Gateway<br/>Data + Control Planes"]
+        AS["Surveyor + Oracle + Quarry"]
+        AR["Hearth + Crucible + Warden"]
+        AGW --> AS
+        AGW --> AR
+    end
+
+    Sentinel["Sentinel<br/>Observability Contracts"]
 
     Axiom --> PGW
-    Axiom --> SGW
     ZitherAi --> PGW
     Elocute --> PGW
     F --> PGW
@@ -98,33 +115,40 @@ flowchart LR
     Sentinel -.- SGW
 ```
 
+*Dotted edges are defined contracts, not deployed paths — the Sentinel SDK is built and tested; consumer rollout is pending.*
+
 <details>
 <summary><strong>Axiom — detailed architecture</strong></summary>
 <br/>
 
-Full-stack markdown notes platform with domain-driven FastAPI backend, Next.js editor, streaming and queued AI workflows, Docker orchestration, and architecture contract tests.
+A markdown knowledge platform with a Next.js workspace, a domain-driven FastAPI API, a server-side Nexus rewrite, PostgreSQL and pgvector storage, and Prism-backed AI. The browser never calls Nexus directly. Durable chat jobs replay over SSE by `Last-Event-ID`; the former direct-streaming endpoint is `410 Gone`.
 
 ```mermaid
 flowchart LR
-    UI["Axiom UI<br/>Next.js / TypeScript<br/>Tailwind / TanStack Query"]
-    API["Axiom API<br/>FastAPI / SQLModel<br/>Supabase Auth / Alembic"]
-    Nexus["Axiom Nexus<br/>LLM Gateway / RAG<br/>Job Queue / Prompt Cache"]
+    UI["Axiom Browser UI<br/>BlockNote + React Flow"]
+    Next["Next.js Server<br/>Rewrite :3000"]
+    API["Axiom API<br/>FastAPI :8000"]
+    Nexus["Axiom Nexus<br/>AI + Jobs :8600"]
     PG[("PostgreSQL<br/>pgvector")]
     Gateway["Prism Gateway"]
+    Edge["Axiom Gateway<br/>nginx :8080"]
 
-    UI --> API
-    UI --> Nexus
-    Nexus --> Gateway
+    UI --> Edge
+    Edge --> Next
+    Next --> API
+    Next -->|"server-side rewrite"| Nexus
     API --> PG
     Nexus --> PG
+    Nexus --> Gateway
 ```
 
-| Repo | Stack | What it does |
-|------|-------|-------------|
-| [`Axiom-api`](https://github.com/vsinghal3737/Axiom-api) | FastAPI / SQLModel / PostgreSQL | Backend API: notes, workspaces, graph/canvas/review, semantic search, AI proxies |
-| [`Axiom-ui`](https://github.com/vsinghal3737/Axiom-ui) | Next.js / TypeScript / Tailwind | Frontend: BlockNote editor, graph/canvas/table surfaces, Review Inbox, AI reasoning UI |
-| [`Axiom-nexus`](https://github.com/vsinghal3737/Axiom-nexus) | FastAPI / SSE / pgvector | AI gateway: jobs, RAG, embeddings, prompt cache, reasoning, similarity |
-| [`Axiom-orchestration`](https://github.com/vsinghal3737/Axiom-orchestration) | Docker Compose / nginx / Make | Local stack, gateway routing, e2e testing, Prism network wiring |
+| Repo | Stack | What it does | Tests |
+|---|---|---|---:|
+| [`Axiom-api`](https://github.com/vsinghal3737/Axiom-api) | FastAPI / SQLModel / PostgreSQL | Notes, workspaces, semantic graph, Vault, change sets, durable chat orchestration, spend budgets, and transactional outbox | 1,248 |
+| [`Axiom-nexus`](https://github.com/vsinghal3737/Axiom-nexus) | FastAPI / SSE / pgvector | AI jobs, RAG, embeddings, prompt cache, Dream Query, Assist, reasoning, and similarity | 559 |
+| [`Axiom-ui`](https://github.com/vsinghal3737/Axiom-ui) | Next.js / TypeScript / Tailwind | BlockNote editor, Graph View, Canvas, Review Inbox, voice and dictation, queue dashboard, versions, trash, and export | 957 |
+| [`Axiom-orchestration`](https://github.com/vsinghal3737/Axiom-orchestration) | Docker Compose / nginx / Make | Gateway on `8080`, stack wiring, health checks, and end-to-end verification | 175 |
+| [`Axiom-atlas`](https://github.com/vsinghal3737/Axiom-atlas) | Documentation / ADRs | Cross-repo architecture, contracts, capabilities, and family decisions | — |
 
 </details>
 
@@ -132,38 +156,41 @@ flowchart LR
 <summary><strong>ZitherAi — detailed architecture</strong></summary>
 <br/>
 
-AI music brain and playlist copilot with provider adapters, taste modeling, 4-stage NL curation, migration engine, CRDT sync, music generation, audio search, listening analytics, and library hygiene workflows.
+A music intelligence system spanning provider adapters, taste modeling, natural-language curation, migration, CRDT sync, audio search, analytics, and generation. Bridge is stateful: it owns PostgreSQL on `5439`, Redis, and an AES-256-GCM token vault with a versioned KEK ring. The main product database runs on `5438`.
 
 ```mermaid
 flowchart LR
-    ZUI["ZitherAi UI<br/>Next.js / TypeScript"]
-    ZAPI["ZitherAi API<br/>FastAPI / SQLModel"]
-    ZNexus["ZitherAi Nexus<br/>Music Brain<br/>Curation / Generation"]
-    ZBridge["ZitherAi Bridge<br/>Provider Adapters<br/>Token Vault"]
-    PG[("PostgreSQL<br/>pgvector")]
-    BridgeDB[("Bridge DB<br/>Token Vault")]
+    ZUI["ZitherAi UI<br/>Next.js :3100"]
+    ZGW["ZitherAi Gateway<br/>nginx :8180"]
+    ZAPI["ZitherAi API<br/>FastAPI :8100"]
+    ZNexus["ZitherAi Nexus<br/>Music Brain :8610"]
+    ZBridge["ZitherAi Bridge<br/>Providers + Vault :8700"]
+    MainDB[("Main PostgreSQL<br/>:5438")]
+    BridgeDB[("Bridge PostgreSQL<br/>:5439")]
     Redis[("Redis")]
-    Providers["Spotify / YouTube<br/>Apple Music"]
-    Gateway["Prism Gateway"]
+    Providers["Spotify + YouTube<br/>Apple Music"]
+    Prism["Prism Cortex<br/>ElevenLabs backend"]
 
-    ZUI --> ZAPI
-    ZUI --> ZNexus
-    ZAPI --> PG
-    ZNexus --> PG
+    ZUI --> ZGW
+    ZGW --> ZAPI
+    ZAPI --> ZNexus
+    ZAPI --> MainDB
+    ZNexus --> MainDB
     ZNexus --> ZBridge
-    ZNexus --> Gateway
+    ZNexus --> Prism
     ZBridge --> BridgeDB
     ZBridge --> Redis
     ZBridge --> Providers
 ```
 
-| Repo | Stack | What it does |
-|------|-------|-------------|
-| [`ZitherAi-api`](https://github.com/vsinghal3737/ZitherAi-api) | FastAPI / SQLModel / PostgreSQL | Backend API: users, providers, taste profiles, playlists, library, listening history, HMAC auth |
-| [`ZitherAi-ui`](https://github.com/vsinghal3737/ZitherAi-ui) | Next.js / TypeScript / Tailwind | Frontend: chat-first discovery, curation compose, migration tape deck, generation studio, audio search, force-graph library, cinema player |
-| [`ZitherAi-nexus`](https://github.com/vsinghal3737/ZitherAi-nexus) | FastAPI / SSE / pgvector | Music brain: 8-step recommendation, 4-stage curation, CRDT sync, generation jobs, semantic + audio search, taste clustering, cost ledger |
-| [`ZitherAi-bridge`](https://github.com/vsinghal3737/ZitherAi-bridge) | FastAPI / PostgreSQL / Redis | Provider adapters: Spotify, YouTube, Apple Music. AES-256-GCM token vault, rate limiting, circuit breakers |
-| [`ZitherAi-orchestration`](https://github.com/vsinghal3737/ZitherAi-orchestration) | Docker Compose / nginx / Make | Local stack, gateway routing, Prism network wiring, e2e checks |
+| Repo | Stack | What it does | Tests |
+|---|---|---|---:|
+| [`ZitherAi-api`](https://github.com/vsinghal3737/ZitherAi-api) | FastAPI / SQLModel / PostgreSQL | Users, providers, taste profiles, playlists, library, listening history, and HMAC-authenticated service flows | 362 |
+| [`ZitherAi-nexus`](https://github.com/vsinghal3737/ZitherAi-nexus) | FastAPI / SSE / pgvector | Curation, CRDT sync, generation jobs, keyword/semantic/auto and audio search, clustering, analytics, and cost ledger | 656 |
+| [`ZitherAi-bridge`](https://github.com/vsinghal3737/ZitherAi-bridge) | FastAPI / PostgreSQL / Redis | Spotify, YouTube, and Apple Music adapters plus the AES-256-GCM vault, rate limits, and circuit breakers | 233 |
+| [`ZitherAi-ui`](https://github.com/vsinghal3737/ZitherAi-ui) | Next.js / TypeScript / Tailwind | Discovery, curation, migration, generation, audio search, library graph, and player experiences | 388 |
+| [`ZitherAi-orchestration`](https://github.com/vsinghal3737/ZitherAi-orchestration) | Docker Compose / nginx / Make | Gateway, product stack, database, Prism wiring, health checks, and end-to-end verification | 47 |
+| [`ZitherAi-atlas`](https://github.com/vsinghal3737/ZitherAi-atlas) | Documentation / ADRs | Cross-repo architecture, contracts, capabilities, and family decisions | — |
 
 </details>
 
@@ -171,30 +198,36 @@ flowchart LR
 <summary><strong>Elocute — detailed architecture</strong></summary>
 <br/>
 
-Voice-to-text and tone transformation product. Recording, transcription, smart text processing, streaming tone transform, TTS, multi-format export, templates, analytics, and a compose mode with context upload.
+A voice-to-text and tone system with four smart-processing stages — filler removal, backtrack correction, punctuation, and formatting — plus 17 tone presets and five export formats. The API has two upstreams: Nexus for model work and Prism Synthesizer directly for PDF and DOCX rendering. Transform jobs return `202` and a stream URL; workers poll with `FOR UPDATE SKIP LOCKED`, while SSE reads from a PostgreSQL-backed buffer.
 
 ```mermaid
 flowchart LR
-    EUI["Elocute UI<br/>Next.js / TypeScript"]
-    EAPI["Elocute API<br/>FastAPI / SQLModel"]
-    ENexus["Elocute Nexus<br/>LLM Gateway<br/>Transform / TTS"]
-    PG[("PostgreSQL")]
-    Redis[("Redis")]
-    Gateway["Prism Gateway"]
+    EUI["Elocute UI<br/>Next.js :3200"]
+    EGW["Elocute Gateway<br/>nginx :8290"]
+    EAPI["Elocute API<br/>FastAPI :8200"]
+    ENexus["Elocute Nexus<br/>Model Work :8620"]
+    Worker["Transform Worker<br/>Job Claims"]
+    PG[("PostgreSQL<br/>Jobs + SSE Buffer")]
+    Cortex["Prism Cortex"]
+    Synth["Prism Synthesizer<br/>PDF + DOCX"]
 
-    EUI --> EAPI
-    EUI --> ENexus
+    EUI --> EGW
+    EGW --> EAPI
+    EAPI --> ENexus
+    EAPI --> Synth
     EAPI --> PG
-    EAPI --> Redis
-    ENexus --> Gateway
+    ENexus --> Cortex
+    Worker --> PG
+    Worker --> ENexus
 ```
 
-| Repo | Stack | What it does |
-|------|-------|-------------|
-| [`Elocute-api`](https://github.com/vsinghal3737/Elocute-api) | FastAPI / SQLModel / PostgreSQL | Backend API: sessions, history, dictionary, snippets, templates, analytics |
-| [`Elocute-nexus`](https://github.com/vsinghal3737/Elocute-nexus) | FastAPI / SSE / Redis | LLM gateway: transcription, tone transform, TTS, compose draft streaming |
-| [`Elocute-ui`](https://github.com/vsinghal3737/Elocute-ui) | Next.js / TypeScript / Tailwind | Frontend: recorder, tone controls, export, template builder, analytics dashboard |
-| [`Elocute-orchestration`](https://github.com/vsinghal3737/Elocute-orchestration) | Docker Compose / nginx / Make | Local stack, gateway routing, Prism network wiring |
+| Repo | Stack | What it does | Tests |
+|---|---|---|---:|
+| [`Elocute-api`](https://github.com/vsinghal3737/Elocute-api) | FastAPI / SQLModel / PostgreSQL | Sessions, history, jobs, SSE replay, dictionary, snippets, templates, analytics, and file export | 88 |
+| [`Elocute-nexus`](https://github.com/vsinghal3737/Elocute-nexus) | FastAPI / SSE / Redis | Transcription, four-stage processing, tone transforms, TTS, and compose generation | 93 |
+| [`Elocute-ui`](https://github.com/vsinghal3737/Elocute-ui) | Next.js / TypeScript / Tailwind | Recorder, tone controls, transform streaming, exports, templates, compose, and analytics | 125 |
+| [`Elocute-orchestration`](https://github.com/vsinghal3737/Elocute-orchestration) | Docker Compose / nginx / Make | Gateway, product stack, Prism wiring, health checks, and end-to-end verification | 20 |
+| [`Elocute-atlas`](https://github.com/vsinghal3737/Elocute-atlas) | Documentation / ADRs | Cross-repo architecture, contracts, capabilities, and family decisions | — |
 
 </details>
 
@@ -202,28 +235,33 @@ flowchart LR
 <summary><strong>Prism — detailed architecture</strong></summary>
 <br/>
 
-Reusable stateless AI microservices layer. Three services behind an nginx gateway with stable routes (`/pulse/v1`, `/cortex/v1`, `/synthesizer/v1`). 687 tests across 4 repos.
+A reusable stateless AI platform with 31 endpoints and no databases, tables, or migrations. Consumers enter only through the gateway. Pulse and Synthesizer call Cortex directly across the internal network to avoid proxy loops. Cortex supports OpenAI, Anthropic, Gemini, and ElevenLabs; ElevenLabs supplies TTS and music generation.
 
 ```mermaid
 flowchart LR
     Client["Consumer Product"]
-    Gateway["Prism Gateway<br/>nginx"]
-    Pulse["Prism-pulse<br/>Input: Normalize / Parse"]
-    Cortex["Prism-cortex<br/>LLM: OpenAI / Anthropic / Gemini"]
-    Synthesizer["Prism-synthesizer<br/>Output: Text / TTS / Files"]
+    Gateway["Prism Gateway<br/>nginx :8280"]
+    Pulse["Prism Pulse<br/>Input :8300"]
+    Cortex["Prism Cortex<br/>Models :8400"]
+    Synth["Prism Synthesizer<br/>Output :8500"]
+    Providers["OpenAI + Anthropic<br/>Gemini + ElevenLabs"]
 
     Client --> Gateway
     Gateway --> Pulse
     Gateway --> Cortex
-    Gateway --> Synthesizer
+    Gateway --> Synth
+    Pulse --> Cortex
+    Synth --> Cortex
+    Cortex --> Providers
 ```
 
-| Repo | Stack | What it does |
-|------|-------|-------------|
-| [`Prism-pulse`](https://github.com/vsinghal3737/Prism-pulse) | FastAPI / stateless | Input service: text normalization, document parsing, audio preparation, SSRF hardening |
-| [`Prism-cortex`](https://github.com/vsinghal3737/Prism-cortex) | FastAPI / stateless | LLM executor: multi-provider streaming, circuit breakers, fallback chains, idempotency cache |
-| [`Prism-synthesizer`](https://github.com/vsinghal3737/Prism-synthesizer) | FastAPI / stateless | Output service: text rendering, TTS, file generation, rate limiting |
-| [`Prism-orchestration`](https://github.com/vsinghal3737/Prism-orchestration) | Docker Compose / nginx / Make | Gateway routing, dev/e2e env, external `prism-network` |
+| Repo | Stack | What it does | Tests |
+|---|---|---|---:|
+| [`Prism-pulse`](https://github.com/vsinghal3737/Prism-pulse) | FastAPI / stateless | Text normalization, document parsing, audio preparation, SSRF defenses, and route-specific body limits | 282 |
+| [`Prism-cortex`](https://github.com/vsinghal3737/Prism-cortex) | FastAPI / stateless | Multi-provider model execution, bulkheads, circuit breakers, fallback chains, idempotency replay, and rate limiting | 381 |
+| [`Prism-synthesizer`](https://github.com/vsinghal3737/Prism-synthesizer) | FastAPI / stateless | Text and file rendering, TTS, music generation, media hardening, and output controls | 285 |
+| [`Prism-orchestration`](https://github.com/vsinghal3737/Prism-orchestration) | Docker Compose / nginx / Make | Gateway, external network, health checks, and end-to-end verification | 124 |
+| [`Prism-atlas`](https://github.com/vsinghal3737/Prism-atlas) | Documentation / ADRs | Prism family architecture, contracts, capabilities, and decisions | — |
 
 </details>
 
@@ -231,20 +269,22 @@ flowchart LR
 <summary><strong>Synapse — detailed architecture</strong></summary>
 <br/>
 
-Shared stateful AI platform. Three services behind an nginx gateway. Schema-per-service on shared PostgreSQL with project-level tenant isolation. Calls Prism Cortex for all LLM work.
+A stateful AI platform with 68 endpoints, 18 tables in three schemas, and 30 migrations. Its 69 PostgreSQL row-level security policies use a two-login model: a migration login owns tables, while constrained runtime logins own nothing. Tenant context is transaction-local and reapplied on every begin; startup refuses superuser, `BYPASSRLS`, or table-owning connections. Out-of-scope and unknown projects return byte-identical `404` responses. All model work goes through Prism Cortex, so Synapse stores no provider credentials.
 
 ```mermaid
 flowchart LR
-    Client["Consumer Product"]
-    Gateway["Synapse Gateway<br/>nginx"]
-    Forge["Synapse-forge<br/>Eval Harness"]
-    Mnemo["Synapse-mnemo<br/>Memory Engine"]
-    Conduit["Synapse-conduit<br/>ETL Pipeline"]
-    PG[("PostgreSQL<br/>pgvector")]
-    Prism["Prism Cortex"]
+    Client["Platform Client"]
+    Gateway["Synapse Gateway<br/>nginx :8680"]
+    Forge["Forge<br/>Evaluation :8710"]
+    Mnemo["Mnemo<br/>Memory :8720"]
+    Conduit["Conduit<br/>ETL :8740"]
+    PG[("PostgreSQL :5450<br/>3 Schemas + RLS")]
+    Prism["Prism Gateway :8280<br/>→ Cortex"]
 
     Client --> Gateway
-    Gateway --> Forge & Mnemo & Conduit
+    Gateway --> Forge
+    Gateway --> Mnemo
+    Gateway --> Conduit
     Forge --> PG
     Mnemo --> PG
     Conduit --> PG
@@ -253,12 +293,15 @@ flowchart LR
     Conduit --> Prism
 ```
 
-| Repo | Stack | What it does |
-|------|-------|-------------|
-| [`Synapse-forge`](https://github.com/vsinghal3737/Synapse-forge) | FastAPI / PostgreSQL | Eval harness: prompt versioning, assertion suites, LLM-as-Judge, regression detection |
-| [`Synapse-mnemo`](https://github.com/vsinghal3737/Synapse-mnemo) | FastAPI / PostgreSQL / pgvector | Memory engine: fact extraction, hierarchical memory, forgetting curves, hybrid retrieval |
-| [`Synapse-conduit`](https://github.com/vsinghal3737/Synapse-conduit) | FastAPI / PostgreSQL | ETL pipeline: LLM extraction, exactly-once delivery, backpressure, checkpointing |
-| [`Synapse-orchestration`](https://github.com/vsinghal3737/Synapse-orchestration) | Docker Compose / nginx / Make | Gateway routing, shared DB, `synapse-network` |
+Forge runs Mann-Whitney U and bootstrap confidence intervals for regression detection across 11 assertion types. Mnemo models half-lives of 2 hours for working memory, 30 days episodic, 180 days semantic, and 10 years procedural; recall reinforces memory, 3 or more episodes promote to semantic, 5 or more accesses promote to procedural, and stale memory prunes at 90 days. Conduit adds per-chunk checkpoints, bounded retry, a dead-letter queue, and adaptive outbound backpressure.
+
+| Repo | Stack | What it does | Tests |
+|---|---|---|---:|
+| [`Synapse-forge`](https://github.com/vsinghal3737/Synapse-forge) | FastAPI / PostgreSQL | Prompt versions, 11 assertion types, LLM-as-Judge evaluation, and statistical regression detection | 144 |
+| [`Synapse-mnemo`](https://github.com/vsinghal3737/Synapse-mnemo) | FastAPI / PostgreSQL / pgvector | Extraction, hierarchical memory, forgetting curves, reinforcement, promotion, pruning, and hybrid retrieval | 162 |
+| [`Synapse-conduit`](https://github.com/vsinghal3737/Synapse-conduit) | FastAPI / PostgreSQL | Checkpointed ETL, extraction, bounded retries, dead-letter handling, and adaptive backpressure | 167 |
+| [`Synapse-orchestration`](https://github.com/vsinghal3737/Synapse-orchestration) | Docker Compose / nginx / Make | Gateway, shared PostgreSQL, schema migrations, runtime-role wiring, and end-to-end checks | 141 |
+| [`Synapse-atlas`](https://github.com/vsinghal3737/Synapse-atlas) | Documentation / ADRs | Cross-repo architecture, contracts, capabilities, and family decisions | — |
 
 </details>
 
@@ -266,30 +309,121 @@ flowchart LR
 <summary><strong>Sentinel — detailed architecture</strong></summary>
 <br/>
 
-Shared observability stack consumed by all services. Five infrastructure containers plus a pip-installable SDK. Single `instrument(app, "service-name")` call wires traces, structured logs, metrics, and health endpoints.
+An observability platform whose beta SDK exports `instrument(app, "service-name")` from the package root. FastAPI and HTTPX instrument by default; Redis and SQLAlchemy instrument only when named. The SDK opens no listener and instead contributes four route contracts owned by the host application. OTLP ingress is protected with TLS and per-consumer bcrypt credentials. The six-container stack adds a capacity guard that watches the storage budget alongside the collector and telemetry backends.
 
 ```mermaid
 flowchart LR
-    App["Any Service"]
-    SDK["Sentinel SDK<br/>pip install"]
-    Collector["OTel Collector"]
+    App["Host Application<br/>Owns 4 Routes"]
+    SDK["Sentinel SDK<br/>Beta Package"]
+    Collector["OTel Collector<br/>TLS + bcrypt"]
     Tempo["Tempo<br/>Traces"]
     Loki["Loki<br/>Logs"]
     Prom["Prometheus<br/>Metrics"]
     Grafana["Grafana<br/>Dashboards"]
+    Guard["Capacity Guard<br/>Storage Budget"]
 
     App --> SDK
-    SDK --> Collector
-    Collector --> Tempo & Loki & Prom
-    Grafana --> Tempo & Loki & Prom
+    SDK -. "OTLP when enrolled" .-> Collector
+    Collector --> Tempo
+    Collector --> Loki
+    Collector --> Prom
+    Grafana --> Tempo
+    Grafana --> Loki
+    Grafana --> Prom
+    Guard --> Tempo
+    Guard --> Loki
+    Guard --> Prom
 ```
 
-| Repo | Stack | What it does |
-|------|-------|-------------|
-| [`Sentinel-sdk`](https://github.com/vsinghal3737/Sentinel-sdk) | Python / OTel / structlog | Pip-installable library: tracing, structured logging, metrics, health checks, secret redaction. 112 tests |
-| [`Sentinel-orchestration`](https://github.com/vsinghal3737/Sentinel-orchestration) | Docker Compose / OTel Collector | Infrastructure: Collector, Tempo, Loki, Prometheus, Grafana, alert rules. 31 tests |
+| Repo | Stack | What it does | Tests |
+|---|---|---|---:|
+| [`Sentinel-sdk`](https://github.com/vsinghal3737/Sentinel-sdk) | Python / OpenTelemetry / structlog | Host instrumentation, structured logs, metrics, traces, secret redaction, and four route contracts | 196 |
+| [`Sentinel-orchestration`](https://github.com/vsinghal3737/Sentinel-orchestration) | Docker Compose / OpenTelemetry Collector | TLS OTLP ingress, Tempo, Loki, Prometheus, Grafana, alerting, and capacity enforcement | 139 |
+| [`Sentinel-atlas`](https://github.com/vsinghal3737/Sentinel-atlas) | Documentation / ADRs | Cross-repo architecture, adoption status, contracts, capabilities, and family decisions | — |
 
 </details>
+
+<details>
+<summary><strong>Anvil — detailed architecture</strong></summary>
+<br/>
+
+Anvil is a standalone hardware-aware local-LLM platform. It measures what a machine can actually do, predicts which models will run and how fast before downloading them, runs them through whichever inference engine fits, and provides a durable job layer for long unattended batch work. Ollama makes pull-and-run easy but offers no capacity planning; LM Studio is a single-box GUI; vLLM and SGLang serve quickly but assume the model already fits; llama-swap routes without answering whether an eight-hour unattended run will finish safely.
+
+The architecture grew from an audit of a local-LLM pipeline that processed 1,298 chapters unattended, survived a mid-run machine reboot, and resumed from checkpoint without corrupting output. Its reusable checkpoint fingerprints, append-only ledger, and content-preserving validation guards became the foundation for Crucible and Warden.
+
+The data plane stays deliberately boring: `/v1/chat/completions`, `/v1/completions`, `/v1/embeddings`, and `/v1/models` live at the root, where OpenAI clients expect them, making adoption a `base_url` swap. The control plane uses per-service prefixes such as `/surveyor/v1/`, `/oracle/v1/`, `/quarry/v1/`, `/hearth/v1/`, `/crucible/v1/`, and `/warden/v1/`.
+
+```mermaid
+flowchart LR
+    Client["OpenAI-Compatible Client"]
+    Operator["Operator / Control Client"]
+    Gateway["Anvil Gateway<br/>nginx :8880"]
+    Surveyor["Surveyor :8900<br/>Measure Hardware"]
+    Oracle["Oracle :8910<br/>Plan Fit + Placement"]
+    Quarry["Quarry :8920<br/>Resolve + Verify Models"]
+    Hearth["Hearth :8930<br/>Runtime Lifecycle + Data Plane"]
+    Crucible["Crucible :8940<br/>Durable Jobs + Ledger"]
+    Warden["Warden :8950<br/>Verify Output"]
+    Cache[("Content-Addressed<br/>Model Cache")]
+    Results[("Checkpoints + Results<br/>Calibration Evidence")]
+
+    Client -->|"root /v1/*"| Gateway
+    Operator -->|"per-service control paths"| Gateway
+    Gateway --> Surveyor
+    Gateway --> Oracle
+    Gateway --> Quarry
+    Gateway --> Crucible
+    Gateway --> Warden
+    Surveyor -->|"measured machine profile"| Oracle
+    Oracle -->|"placement + throughput plan"| Quarry
+    Quarry --> Cache
+    Cache --> Hearth
+    Crucible -->|"public compat plane"| Gateway
+    Gateway -->|"root /v1/*"| Hearth
+    Crucible --> Warden
+    Warden --> Results
+    Results -->|"actual performance"| Oracle
+```
+
+Surveyor measures the machine, Oracle predicts what will run, Crucible records what actually happened, and those results recalibrate Oracle's next prediction. Predictions improve as the platform does work. The moat is Oracle and Crucible: runtime adapters are thin, versioned, pinned, and expected to churn, while calibrated planning and verified resumable batch execution compound.
+
+Two rules carry the architecture. No service imports another — all collaboration is HTTP. Crucible also drives Hearth through the public compatibility plane exactly as an external client would, forcing any batch requirement the public API cannot express to surface as an immediate design flaw.
+
+Standalone status is enforced, not aspirational. Anvil has no dependency on Prism, Synapse, or Sentinel in either direction. A byte-identical independence scanner ships in all seven executable repos, runs per commit, and scans nginx configuration and runtime templates alongside Python. Prism may register Anvil as a configured provider; that is a Prism concern and never an Anvil dependency.
+
+| Repo | Port | What it does | Tests |
+|---|---:|---|---:|
+| [`Anvil-surveyor`](https://github.com/vsinghal3737/Anvil-surveyor) | 8900 | Hardware discovery and benchmarking across GPUs, VRAM, NVLink/PCIe, cores, NUMA, RAM bandwidth, and NVMe — measured rather than copied from specifications | — |
+| [`Anvil-oracle`](https://github.com/vsinghal3737/Anvil-oracle) | 8910 | Feasibility and placement planning: fit, GPU layers versus CPU experts, KV budget, throughput with error bars, and draft-model selection | — |
+| [`Anvil-quarry`](https://github.com/vsinghal3737/Anvil-quarry) | 8920 | Model resolution, verified resumable download, content-addressed caching, garbage collection, and license gating | — |
+| [`Anvil-hearth`](https://github.com/vsinghal3737/Anvil-hearth) | 8930 | Runtime adapters, capability negotiation, model process lifecycle, and the OpenAI-compatible data plane | — |
+| [`Anvil-crucible`](https://github.com/vsinghal3737/Anvil-crucible) | 8940 | Atomic checkpoints, contract fingerprints, chunking, retries, durable jobs, and an append-only JSONL ledger | — |
+| [`Anvil-warden`](https://github.com/vsinghal3737/Anvil-warden) | 8950 | Content-preserving verification guards and domain adapters that decide whether each output unit is acceptable | — |
+| [`Anvil-orchestration`](https://github.com/vsinghal3737/Anvil-orchestration) | 8880 | nginx gateway for both planes, Compose root, independence gate, and smoke tooling | — |
+| [`Anvil-atlas`](https://github.com/vsinghal3737/Anvil-atlas) | — | Cross-repo documentation, contracts, architecture, and ADRs | — |
+
+*Target architecture, in active development across eight repositories.*
+</details>
+
+---
+
+### Documentation Standard
+
+Every family carries the same frozen-v1 documentation tier, plus an `-atlas` repository that owns its family's cross-repo truth no individual service can claim: whole-system architecture, capability maps, security posture, technology inventory, glossary, roadmap, and family-level ADRs.
+
+Each code repository carries a documentation index, system and component architecture, an API catalog, per-endpoint call flows, sequence diagrams, operations guidance, ADRs, runbooks, and a database design wherever it owns tables.
+
+This standard is verified rather than asserted. In Prism, 122 of 122 documents are freshness-stamped, 437 of 437 code citations resolve to a real file at a real line, 151 of 151 Mermaid blocks parse, and there are zero broken internal links. Guardrails test behavior, not config shape: 16 string-matching assertions were replaced by runtime-behavior assertions, and a mutation harness proved each one could fail by killing 16 of 16 mutants. Cross-repo contract tests AST-parse live sibling middleware, so drift in either repository breaks the gate.
+
+| Family | Atlas repository |
+|---|---|
+| Axiom | [`Axiom-atlas`](https://github.com/vsinghal3737/Axiom-atlas) |
+| ZitherAi | [`ZitherAi-atlas`](https://github.com/vsinghal3737/ZitherAi-atlas) |
+| Elocute | [`Elocute-atlas`](https://github.com/vsinghal3737/Elocute-atlas) |
+| Prism | [`Prism-atlas`](https://github.com/vsinghal3737/Prism-atlas) |
+| Synapse | [`Synapse-atlas`](https://github.com/vsinghal3737/Synapse-atlas) |
+| Sentinel | [`Sentinel-atlas`](https://github.com/vsinghal3737/Sentinel-atlas) |
+| Anvil | [`Anvil-atlas`](https://github.com/vsinghal3737/Anvil-atlas) |
 
 ---
 
